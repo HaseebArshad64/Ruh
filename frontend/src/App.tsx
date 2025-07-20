@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import {
   AppBar,
   Toolbar,
@@ -10,23 +10,27 @@ import {
   CssBaseline,
   ThemeProvider,
   createTheme,
-} from '@mui/material';
-import { LocalHospital, People, CalendarToday } from '@mui/icons-material';
+} from "@mui/material";
+import { LocalHospital, People, CalendarToday } from "@mui/icons-material";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // Import components
-import ClientList from './components/ClientList';
-import AppointmentList from './components/AppointmentList';
-import AppointmentForm from './components/AppointmentForm';
-import Dashboard from './components/Dashboard';
+import ClientList from "@/features/clients/components/organisms/ClientList";
+import ClientEditForm from "@/features/clients/components/organisms/ClientEditForm";
+import AppointmentListContainer from "@/features/appointments/components/organisms/AppointmentListContainer";
+import AppointmentForm from "@/features/appointments/components/organisms/AppointmentForm";
+import AppointmentEditForm from "@/features/appointments/components/organisms/AppointmentEditForm";
+import Dashboard from "@/features/dashboard/components/organisms/Dashboard";
 
 // Create Material-UI theme
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#2e7d32', // Green color for wellness theme
+      main: "#2e7d32", // Green color for wellness theme
     },
     secondary: {
-      main: '#1976d2',
+      main: "#1976d2",
     },
   },
   typography: {
@@ -44,32 +48,22 @@ const App: React.FC = () => {
       <CssBaseline />
       <Router>
         <Box sx={{ flexGrow: 1 }}>
-          <AppBar position='static'>
+          <AppBar position="static">
             <Toolbar>
               <LocalHospital sx={{ mr: 2 }} />
-              <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
+              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 Virtual Wellness Platform
               </Typography>
-              <Button
-                color='inherit'
-                component={Link}
-                to='/'
-                startIcon={<LocalHospital />}
-              >
+              <Button color="inherit" component={Link} to="/" startIcon={<LocalHospital />}>
                 Dashboard
               </Button>
-              <Button
-                color='inherit'
-                component={Link}
-                to='/clients'
-                startIcon={<People />}
-              >
+              <Button color="inherit" component={Link} to="/clients" startIcon={<People />}>
                 Clients
               </Button>
               <Button
-                color='inherit'
+                color="inherit"
                 component={Link}
-                to='/appointments'
+                to="/appointments"
                 startIcon={<CalendarToday />}
               >
                 Appointments
@@ -77,14 +71,34 @@ const App: React.FC = () => {
             </Toolbar>
           </AppBar>
 
-          <Container maxWidth='lg' sx={{ mt: 4, mb: 4 }}>
+          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Routes>
-              <Route path='/' element={<Dashboard />} />
-              <Route path='/clients' element={<ClientList />} />
-              <Route path='/appointments' element={<AppointmentList />} />
-              <Route path='/appointments/new' element={<AppointmentForm />} />
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/clients" element={<ClientList />} />
+              <Route path="/clients/:id/edit" element={<ClientEditForm />} />
+              <Route path="/appointments" element={<AppointmentListContainer />} />
+              <Route path="/appointments/new" element={<AppointmentForm />} />
+              <Route path="/appointments/:id/edit" element={<AppointmentEditForm />} />
             </Routes>
           </Container>
+
+          {/* Toast Container with beautiful styling */}
+          <ToastContainer
+            position="bottom-left"
+            autoClose={4000}
+            hideProgressBar={false}
+            newestOnTop
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+            toastStyle={{
+              borderRadius: "12px",
+              fontFamily: theme.typography.fontFamily,
+            }}
+          />
         </Box>
       </Router>
     </ThemeProvider>
