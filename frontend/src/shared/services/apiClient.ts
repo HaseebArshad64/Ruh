@@ -1,7 +1,7 @@
 import axios, { AxiosResponse, AxiosError } from 'axios';
 
 // API configuration
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:4567';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://ruh-1.onrender.com';
 
 // Create axios instance with default config
 export const apiClient = axios.create({
