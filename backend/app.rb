@@ -8,7 +8,18 @@ require 'pg'
 
 # Database configuration
 def database_url
-  ENV['DATABASE_URL'] || raise('DATABASE_URL environment variable is not set')
+  ENV['DATABASE_URL'] || begin
+    host = ENV['DB_HOST'] || 'localhost'
+    name = ENV['DB_NAME'] || 'wellness_platform_dev'
+    user = ENV['DB_USER'] || ENV['USER'] || 'postgres'
+    password = ENV['DB_PASSWORD']
+
+    if password
+      "postgres://#{user}:#{password}@#{host}/#{name}"
+    else
+      "postgres://#{user}@#{host}/#{name}"
+    end
+  end
 end
 
 # Vercel handler
