@@ -1,13 +1,13 @@
+
+
+
+
 source 'https://rubygems.org'
 
-ruby '2.6.10'
+ruby '3.2.2'
 
-gem 'sinatra', '~> 2.2.4'
-gem 'json', '~> 2.7.6'
+gem 'sinatra', '~> 3.1.0'
+gem 'json', '~> 2.7.1'
 gem 'pg', '~> 1.5'
 gem 'sequel', '~> 5.94'
-gem 'puma', '~> 5.6'
-
-group :development do
-  gem 'rerun'
-end
+gem 'puma', '~> 6.4'
