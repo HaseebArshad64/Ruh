@@ -24,6 +24,7 @@ GEM
 
 PLATFORMS
   universal-darwin-24
+  x86_64-linux
 
 DEPENDENCIES
   json (~> 2.7.1)
