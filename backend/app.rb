@@ -8,7 +8,7 @@ require 'pg'
 
 # Database configuration
 def database_url
-  ENV['DATABASE_URL'] || 'postgresql://neondb_owner:npg_UZtDCEB5Llj6@ep-gentle-cherry-aeh1a67u-pooler.c-2.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
+  ENV['DATABASE_URL'] || raise('DATABASE_URL environment variable is not set')
 end
 
 # Vercel handler
