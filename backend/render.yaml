@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: ruh-backend
+    env: ruby
+    buildCommand: bundle install
+    startCommand: bundle exec rackup config.ru -p $PORT -o 0.0.0.0
+    envVars:
+      - key: RACK_ENV
+        value: production 
