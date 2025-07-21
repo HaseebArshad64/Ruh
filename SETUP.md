@@ -4,7 +4,7 @@
 
 Ensure you have the following installed:
 
-- **Ruby** 2.6.10+
+- **Ruby** 3.2.2 (required by Render)
 - **PostgreSQL** 12+
 - **Node.js** 18+ and npm
 - **Git**
